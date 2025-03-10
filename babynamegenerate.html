@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- SEO Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate beautiful baby names by gender, letter, origin, and style. Find the perfect name for your newborn with our extensive database.">
+    <meta name="keywords" content="baby names, name generator, boy names, girl names, baby name ideas">
+    <meta name="author" content="alish">
+    <meta property="og:title" content="Baby Name Generator | Find Perfect Names">
+    <meta property="og:description" content="Generate beautiful baby names by gender, letter, origin, and style.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('baby-bg.jpg');
+            background-size: cover;
+            padding: 100px 0;
+            color: white;
+        }
+        
+        .name-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .name-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .ad-unit {
+            background: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .filter-section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+    
+    <title>Baby Name Generator | Find Perfect Names</title>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">BabyNames</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ad Unit -->
+    <div class="container mt-3">
+        <div class="ad-unit">
+            <!-- Insert Google AdSense Ad Unit ID here -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=cca-app-pub-3048756367536101/3039272472"
+                    crossorigin="anonymous"></script>
+            <!-- Responsive Ad -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-app-pub-3048756367536101/3039272472"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="hero-section" id="home">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Find the Perfect Baby Name</h1>
+            <div class="filter-section">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <select class="form-select" id="gender">
+                            <option value="">Select Gender</option>
+                            <option value="boy">Boy</option>
+                            <option value="girl">Girl</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="letter">
+                            <option value="">Starting Letter</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <!-- Add more letters -->
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select" id="origin">
+                            <option value="">Origin</option>
+                            <option value="biblical">Biblical</option>
+                            <option value="modern">Modern</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary w-100" onclick="generateNames()">Generate Names</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container my-5">
+        <div class="row" id="nameResults">
+            <!-- Names will be populated here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About Us</h5>
+                    <p>World's largest baby name database with over 500,000 names</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#privacy" class="text-white">Privacy Policy</a></li>
+                        <li><a href="#terms" class="text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Sample dataset (In real implementation, use server-side processing)
+        const namesDatabase = {
+            boy: ["Liam", "Noah", "Oliver", "..."],
+            girl: ["Emma", "Olivia", "Charlotte", "..."]
+        };
+
+        function generateNames() {
+            const gender = document.getElementById('gender').value;
+            const letter = document.getElementById('letter').value;
+            const origin = document.getElementById('origin').value;
+
+            // Filtering logic
+            let results = namesDatabase[gender].filter(name => 
+                name.startsWith(letter) && 
+                checkOrigin(name, origin)
+            );
+
+            displayResults(results);
+        }
+
+        function displayResults(names) {
+            const container = document.getElementById('nameResults');
+            container.innerHTML = names.map(name => `
+                <div class="col-md-3">
+                    <div class="name-card">
+                        <h5>${name}</h5>
+                        <small class="text-muted">${getMeaning(name)}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Additional helper functions
+        function checkOrigin(name, origin) {
+            // Add origin validation logic
+            return true;
+        }
+
+        function getMeaning(name) {
+            // Add name meaning logic
+            return "Beautiful life";
+        }
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Baby Name Generator",
+        "url": "https://yourwebsite.com",
+        "description": "World's largest baby name database with over 500,000 names"
+    }
+    </script>
+</body>
+      </html>
